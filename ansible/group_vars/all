@@ -208,6 +208,11 @@ cli:
   dir:
     become: "{{ cli_dir_become | default(false) }}"
 
+providers:
+ alarmstrigger:
+    port: 11001
+
+
 # The default name space is /whisk.system. The catalog namespace must begin with a slash "/".
 catalog_namespace: "/whisk.system"
 
@@ -243,6 +248,14 @@ catalog_repos:
     # Set the local location as the same level as openwhisk home, but it can be changed.
     location: "{{ openwhisk_home }}/../openwhisk-catalog"
     version: "HEAD"
+    repo_update: "no"
+
+provider_repos:
+  openwhisk_package_alarms:
+    url: https://github.com/apache/incubator-openwhisk-package-alarms.git
+    location: "{{ openwhisk_home }}/../openwhisk-package-alarms"
+    version: "HEAD"
+    docker_tag: "latest"
     repo_update: "no"
 
 openwhisk_cli_tag: "{{ lookup('ini', 'git_tag section=openwhisk-cli file={{ openwhisk_home }}/ansible/files/package-versions.ini') }}"
