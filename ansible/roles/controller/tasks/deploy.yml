@@ -11,12 +11,6 @@
   set_fact:
     controller_name: "controller{{ controller_index }}"
 
-- name: "pull the {{ docker.image.tag }} image of controller"
-  shell: "docker pull {{ docker_registry }}{{ docker.image.prefix }}/controller:{{ docker.image.tag }}"
-  when: docker_registry != ""
-  retries: "{{ docker.pull.retries }}"
-  delay: "{{ docker.pull.delay }}"
-
 - name: ensure controller log directory is created with permissions
   file:
     path: "{{ whisk_logs_dir }}/{{ controller_name }}"

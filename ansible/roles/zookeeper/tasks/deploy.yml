@@ -1,11 +1,6 @@
 ---
 # This role will install Kafka with Zookeeper in group 'kafka' in the environment inventory
 
-- name: "pull the zookeeper:{{ zookeeper.version }} image"
-  shell: "docker pull zookeeper:{{ zookeeper.version }}"
-  retries: "{{ docker.pull.retries }}"
-  delay: "{{ docker.pull.delay }}"
-
 - name: (re)start zookeeper
   docker_container:
     name: zookeeper{{ groups['zookeepers'].index(inventory_hostname) }}
