@@ -6,7 +6,6 @@
     path: "{{ whisk_logs_dir }}/alarmsTrigger"
     state: directory
     mode: 0777
-  become: true
 
 - name: (re)start alarms trigger
   docker_container:
