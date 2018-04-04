@@ -33,3 +33,8 @@ kafka_topics_invoker_retentionBytes: 104857600
 kafka_topics_invoker_retentionMS: 300000
 
 env_hosts_dir: "{{ playbook_dir }}/environments/local"
+
+limit_invocations_per_minute: 6000
+limit_invocations_concurrent: 3000
+limit_invocations_concurrent_system: 5000
+limit_fires_per_minute: 3600
