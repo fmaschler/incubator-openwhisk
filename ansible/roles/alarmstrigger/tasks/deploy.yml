@@ -17,7 +17,7 @@
     restart_policy: "{{ docker.restart.policy }}"
     hostname: alarmstrigger
     env:
-      "ROUTER_HOST": "{{ whisk_api_host_name | default(groups['edge'] | first) }}"
+      "ROUTER_HOST": "{{ whisk_api_host_name | default(groups['edge'] | first) }}:4433"
       "DB_PREFIX": "{{ db_prefix }}"
       "DB_USERNAME": "{{ db_username }}"
       "DB_PASSWORD": "{{ db_password }}"

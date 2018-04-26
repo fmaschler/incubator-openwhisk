@@ -4,10 +4,10 @@
 - set_fact:
     provider_location={{ item.value.location }}
     provider_repo_url={{ item.value.url }}
-    edge_host={{ groups['edge'] | first }}
+    edge_host={{ groups['edge'] | first }}:4433
     version="HEAD"
     repo_update="yes"
-    api_host={{ whisk_api_host_name | default(groups['edge'] | first) }}
+    api_host="{{ whisk_api_host_name | default(groups['edge'] | first) }}:4433"
     db_url="{{ db_protocol }}://{{ db_username }}:{{ db_password }}@{{ db_host }}:{{ db_port }}"
 
 - set_fact:
